@@ -23,8 +23,7 @@ function makeRow(member = { memberNo, memberName, memberPoint }) {
 		document.querySelector('#memberName').value =
 			tr.children[1].innerHTML;
 		document.querySelector('#memberPoint').value =
-			tr.children[2].innerHTML; 
-		
+			tr.children[2].innerHTML;
 	})
 	for (let prop in member) {
 		let td = document.createElement('td');
@@ -78,18 +77,3 @@ members.forEach(function(item) {
 	let tr = makeRow(item);
 	document.querySelector('table#tlist tbody').appendChild(tr);
 });
-
-document.querySelector('#editmember').addEventListener('click', editmMemberFnc)
-function editmMemberFnc(e){
-let sd = document.querySelectorAll('#tlist tbody tr');
-sd.forEach(function(tr){
- let td =  tr.children[0].innerHTML;
- console.log(td[0])
- if(td==document.querySelector('#memberNo').value){
-	tr.children[1].innerHTML=document.querySelector('#memberName').value;
-	tr.children[2].innerHTML=document.querySelector('#memberPoint').value;
- }
-})
-	
-}
-

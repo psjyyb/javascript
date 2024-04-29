@@ -4,8 +4,7 @@
 const members = [
 	{ memberNo: 1001, memberName: '홍길동', memberPoint: 90 },
 	{ memberNo: 1002, memberName: '김길동', memberPoint: 100 },
-	{ memberNo: 1003, memberName: '박길동', memberPoint: 95 },
-	{ memberNo: 1004, memberName: '김다은', memberPoint: 90 }
+	{ memberNo: 1003, memberName: '박길동', memberPoint: 95 }
 ];
 
 // 배열 for.
