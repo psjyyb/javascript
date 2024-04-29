@@ -16,6 +16,15 @@ function addmMemberFnc() {
 function makeRow(member = { memberNo, memberName, memberPoint }) {
 	//tr 생성
 	let tr = document.createElement('tr');
+	tr.addEventListener('click', function(e) {
+
+		document.querySelector('#memberNo').value =
+			tr.children[0].innerHTML;
+		document.querySelector('#memberName').value =
+			tr.children[1].innerHTML;
+		document.querySelector('#memberPoint').value =
+			tr.children[2].innerHTML;
+	})
 	for (let prop in member) {
 		let td = document.createElement('td');
 		td.innerText = member[prop]; //mem.memberNo
@@ -40,22 +49,34 @@ function makeRow(member = { memberNo, memberName, memberPoint }) {
 	tr.appendChild(td);
 	return tr;
 }
+
 function changeRow(e) {
-	// this => <input type = "checkbox" checked>
-	//console.log(this.checked); //checkbox일 경우 true false 반환.
-	document.querySelectorAll('tbody input[type="checkbox"]').forEach(function(item) {
-		item.checked = true;
-	})
+
+	console.log(this.checked)
 }
 
 function deleteRow(evnt) {
+	evnt.stopPropagation(); //상하위 요소이벤트 차단
 	evnt.target.parentElement.parentElement.remove();
 	//td.parentElement.remove();
 }
+// thead input[type="checkbox"]
+document.querySelector('thead input[type="checkbox"]')
+	.addEventListener('change', function() {
+		// event핸들러 => this
+		// thead => tbody 적용.
+		let inp = this;
+		document.querySelectorAll('tbody input[type="checkbox"]')
+			.forEach(function(item) {
+				console.log(item);
+				item.checked = inp.checked;
+			})
+	})
 // members 배열의 갯수만큼 tr생성.
 members.forEach(function(item) {
 	let tr = makeRow(item);
 	document.querySelector('table#tlist tbody').appendChild(tr);
 });
+
 
 
