@@ -15,7 +15,7 @@ const obj = {
 				return result.json(); // json 문자열 -> 객체 변환.
 			})
 			.then(function(result) {
-				console.log(result); // DOM 활용.
+				console.log('dsdsd'+result); // DOM 활용.
 				result.forEach(function(member) {
 					let tr = document.createElement('tr');
 					for (let prop in member) {
@@ -29,7 +29,7 @@ const obj = {
 	}
 } // new Object(); 객체 생성
 obj.name = "Hongkildong";
-console.log(`이름 : ${obj.name},  나이 : ${obj["age"]}`);
+console.log(`이름 : ${obj.name},  나이 : ${obj.age}`);
 console.log(obj.showInfo());
 
 console.log(window);
@@ -37,8 +37,5 @@ console.log(window);
 for (let prop in obj) {
 	console.log(`속성 : ${prop}, 값 : ${obj[prop]}`);
 }
-
-
 //window.alert('확인!!');
-console.clear();
 obj.empList();

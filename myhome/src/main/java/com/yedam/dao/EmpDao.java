@@ -20,6 +20,8 @@ public class EmpDao extends DAO{
 				map.put("이메일", rs.getString("email"));
 				list.add(map);
 			}
+			System.out.println(list.size());
+			System.out.println(list.get(0).size());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
