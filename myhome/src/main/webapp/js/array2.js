@@ -61,7 +61,7 @@ function genderLists() {
 		if (dd != td) {
 			tr.remove();
 		}
-	})
+	}) 
 }
 makeList(empList);
 makeHome();
