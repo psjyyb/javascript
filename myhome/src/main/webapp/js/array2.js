@@ -14,7 +14,7 @@ genderAry.forEach(gender => {
 	document.querySelector('#genderList').appendChild(opt)
 })
 function makeHome() {
-	let obj = ['id', 'first_name', 'last_name', 'email', 'gender', 'ip_address']
+	let obj = ['번호', '이름', '성', '이메일', '성별', 'ip_address']
 	let tr = document.createElement('tr');
 	for (let i = 0; i < obj.length; i++) {
 		let th = document.createElement('th');
