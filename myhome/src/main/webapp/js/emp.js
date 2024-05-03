@@ -32,10 +32,11 @@ function addRow(){
 	let esalary = document.querySelector('#esalary').value;
 	let ehire = document.querySelector('#edate').value;
 	
-	let param = '../empsave.json?job=add&name='+ename+'&phone='+ephone
+	let param = 'job=add&name='+ename+'&phone='+ephone
 	+'&salary='+esalary+'&hire='+ehire+'&email='+email;
-	addHtp.open('get',param);
-	addHtp.send();
+	addHtp.open('post','../empsave.json');
+	addHtp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');// x-www-form-urlencoded <- 키 벨류 옵션으로 값을 넘기겠다.
+	addHtp.send(param);
 	addHtp.onload = function(){
 		let result = JSON.parse(addHtp.responseText);
 		console.log(result);
@@ -44,7 +45,7 @@ function addRow(){
 			document.querySelector('#elist').appendChild(tr);
 		}
 	}
-}
+}// end of addRow.
 
 function makeRow(emp = {}) {
 	let props = ['empNo', 'empName', 'empPhone', 'email', 'salary'];
@@ -81,11 +82,10 @@ function modifyRow(){
 	 newTr.querySelector('button').addEventListener('click',updateRow)
 	console.log(newTr);
 	oldTr.parentElement.replaceChild(newTr,oldTr);
-}
+} // end of modifyRow.
 //실제 값을 바꿔주는 함수
 function updateRow(){
 	let oldTr = this.parentElement.parentElement;
-	let newTr = this.parentElement.parentElement;
 	let empNo = this.parentElement.parentElement.dataset.no; // date-no => dataset.no
 	let email = this.parentElement.parentElement.children[3].children[0].value;
 	let salary = this.parentElement.parentElement.children[4].children[0].value;
@@ -101,7 +101,7 @@ function updateRow(){
 		}
 		
 	}
-}
+} //end of updateRow
 function deleteRow(){
 	const delNo = this.parentElement.parentElement.children[0].innerText;
 	let tr = this.parentElement.parentElement;

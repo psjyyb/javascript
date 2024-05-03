@@ -32,7 +32,6 @@ public class EmpJson extends HttpServlet {
 
 		EmpDao edao = new EmpDao();
 		EmpVo evo = new EmpVo();
-		System.out.println(job);
 		if (job.equals("add")) {
 			String a = req.getParameter("name");
 			String b = req.getParameter("phone");
