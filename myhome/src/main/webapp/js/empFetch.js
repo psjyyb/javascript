@@ -114,7 +114,7 @@ function updateRow(){
 	.then(result => result.json())
 	.then(data => {
 		if(data.reCode=='OK'){
-			let newTr =makeRow(data.retVal);
+			let newTr = makeRow(data.retVal);
 			oldTr.parentElement.replaceChild(newTr,oldTr);
 		}
 	})

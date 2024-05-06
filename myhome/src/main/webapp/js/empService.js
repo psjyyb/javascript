@@ -33,11 +33,10 @@ const svc = {
 			.then(successCall)
 			.catch(errorCall)
 	},
-	// 삭제.
-	deleteRow(eno, successCall, errorCall) {
+	deleteEmp(eno, successCall, errorCall) {
 		fetch('../empsave.json?job=delete&empNo=' + eno) 
 			.then(result => result.json())
 			.then(successCall)
 			.catch(errorCall)
 	}
-	} // end of svc
+} // end of svc

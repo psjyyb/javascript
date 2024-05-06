@@ -35,7 +35,7 @@ function addRow(){
 	let param = 'job=add&name='+ename+'&phone='+ephone
 	+'&salary='+esalary+'&hire='+ehire+'&email='+email;
 	addHtp.open('post','../empsave.json');
-	addHtp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');// x-www-form-urlencoded <- 키 벨류 옵션으로 값을 넘기겠다.
+	addHtp.setRequestHeader('Content-Type','application/x-www-form-urlencoded');// x-www-form-urlencoded <- 키, 벨류 옵션으로 값을 넘기겠다.
 	addHtp.send(param);
 	addHtp.onload = function(){
 		let result = JSON.parse(addHtp.responseText);

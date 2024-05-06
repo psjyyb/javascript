@@ -16,7 +16,9 @@ function initForm() {
 		err => console.log(err)) //errorCall
 
 	// 등록 이벤트.
-	document.querySelector('#addBtn').addEventListener('click', addRow);
+	document.querySelector('#addBtn').addEventListener('click', addRow)
+
+
 }// end of initform.
 
 function makeRow(emp = {}) {
@@ -35,14 +37,51 @@ function makeRow(emp = {}) {
 	btn.addEventListener('click', deleteRow);
 	td.appendChild(btn);
 	tr.appendChild(td);
+	let ts = document.createElement('td');
+	let ck = document.createElement('input');
+	ck.setAttribute('type', 'checkbox');
+	ts.appendChild(ck);
+	tr.appendChild(ts);
+
+	//ch.addEventListener('change', changeRow);
 	return tr;
 } // end of makeRow
+
+// 모두선택
+let all = document.querySelector('thead input[type="checkbox"]');
+all.addEventListener('change', function() {
+	//event핸들러 => this
+	// thead => tbody 적용.
+	let inp = this;
+	document.querySelectorAll('tbody input[type="checkbox"]')
+		.forEach(function(item) {
+			item.checked = inp.checked;
+		})
+})
+// 선택삭제 이벤트
+document.querySelector('#delBtn').addEventListener('click', function() {
+	let td = document.querySelectorAll('#elist tr');
+	td.forEach(function(all) {
+		if (all.children[6].children[0].checked) {
+			all.remove();
+			let enpNo = all.children[0].innerHTML;
+			svc.deleteEmp(enpNo,
+				data => {
+					if (data.retCode == 'OK') {
+						tr.remove();
+					}
+				},
+				err => console.log(err) // errorCall
+			);
+		}
+	})
+})
 
 // 삭제이벤트.
 function deleteRow() {
 	let eno = this.parentElement.parentElement.dataset.no;
 	let tr = this.parentElement.parentElement;
-	svc.deleteRow(eno,
+	svc.deleteEmp(eno,
 		data => {
 			if (data.retCode == 'OK') {
 				tr.remove();
@@ -69,6 +108,7 @@ function addRow() {
 			if (data.reCode == 'OK') {
 				let tr = makeRow(data.retVal);
 				document.querySelector('#elist').appendChild(tr);
+				console.log(data);
 			}
 		},
 		err => console.log(err) // errorCall
