@@ -5,13 +5,18 @@
 document.querySelector('#add').addEventListener('click', addBook)
 function addBook() {
 	let code = document.querySelector('#code').value;
-	let book_name = document.querySelector('#name').value;;
-	let author_name = document.querySelector('#write').value;;
-	let press = document.querySelector('#com').value;;
-	let price = document.querySelector('#price').value;;
+	let book_name = document.querySelector('#name').value;
+	let author_name = document.querySelector('#write').value;
+	let press = document.querySelector('#com').value;
+	let price = document.querySelector('#price').value;
 	const mem = { code, book_name, author_name, press, price };
 	let tr = makeRow(mem)
 	document.querySelector('#list table tbody').appendChild(tr);
+	document.querySelector('#code').value="";
+	document.querySelector('#name').value="";
+	document.querySelector('#write').value="";
+	document.querySelector('#com').value="";
+	document.querySelector('#price').value="";
 }
 // tr,td생성후 값넣기,삭제버튼,체크박스
 function makeRow(member = { code, book_name, author_name, press, price }) {

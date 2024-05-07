@@ -170,7 +170,7 @@ public class EmpDao extends DAO{
 		conn();
 		try {
 			psmt = conn.prepareStatement("select e.*"
-					+ "from hr.employees e");
+					+ "from jsp.employees e");
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				List<String> map = new ArrayList<>();
