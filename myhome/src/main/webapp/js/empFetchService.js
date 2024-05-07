@@ -77,6 +77,7 @@ document.querySelector('#delBtn').addEventListener('click', function() {
 	})
 })
 
+
 // 삭제이벤트.
 function deleteRow() {
 	let eno = this.parentElement.parentElement.dataset.no;

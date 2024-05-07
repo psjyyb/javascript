@@ -7,7 +7,7 @@ function initForm() {
 	let show = document.querySelector('#show');
 	show.appendChild(svc.makeTable());
 	document.querySelector('#show>table').appendChild(svc.makeHeader2());
-	document.querySelector('#show>table').appendChild(svc.makeBody());
+	document.querySelector('#show>table').appendChild(svc.makeBody(5));
 
 }
 
@@ -42,27 +42,52 @@ const svc = {
 		thd.appendChild(tr);
 		return thd;
 	},
-	makeBody: function() {
+	makeBody: function(month = 5) {
 		let tbd = document.createElement('tbody');
 		let tr = document.createElement('tr');
-		let space = 1;
+		let space = 1; //this.getFirstDate(month); // getFirstDate(month) => 1일의 위치 
 		for (let j = 0; j < space; j++) {
 			let td = document.createElement('td');
 			td.innerText = '';
 			tr.appendChild(td);
-		}
-		for (let i = 1; i <= 30; i++) {
-			if ((i + space) % 7 == 0) {
+		}	
+		let last = getLastDate(5);
+		console.log(last);
+		for (let i = 1; i <= last; i++) { // getLastDate(month)=> 월의 마지막날을 반환.
+			if ((i + space) % 7 == 1) {
 				tbd.appendChild(tr);
 				tr = document.createElement('tr');
 			}
-			
-				td = document.createElement('td');
-				td.innerHTML = i;
-				tr.appendChild(td);
-			
+
+			td = document.createElement('td');
+			td.innerHTML = i;
+			tr.appendChild(td);
+
 		}
 		tbd.appendChild(tr);
 		return tbd;
+	},
+getFirstDate(month){
+	let today = new Date(2024, month, 1);
+	cosole.log(today);
+},
+getLastDate(month){
+	if(month==2){
+		return 28;
+	}else if(month<=7&&month%2==1){
+		return 31;
+	}else if(month<=7&&month%2==0){
+		return 30;
+	}else if(month>7&&month%2==0){
+		return 31;
+	}else if(month>7&&month%2==1){
+		return 30;
 	}
+	
 }
+}
+
+// 달의 1일째 요일 계산
+
+
+// 달의 마지막날 계산
