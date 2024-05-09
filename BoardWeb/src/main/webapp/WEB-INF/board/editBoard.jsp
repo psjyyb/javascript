@@ -22,7 +22,7 @@
  		<th>작성자</th><td></td>
  	</tr>
  		<tr align="center">
-			<td colspan="2"><input type="submit"  value="삭제"ㄴ></td>
+			<td colspan="2"><input type="submit"  value="수정"></td>
 		</tr>
 </table>
 <input type="hidden" name="bno" value="<%=vo.getBoardNo() %>">
