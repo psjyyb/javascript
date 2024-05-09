@@ -11,6 +11,7 @@
 
 <h3>게시글 목록</h3>
 <!-- 글번호,제목,작성자,작성일시,조회수 -->
+<form action="addBoard.do">
 <table class="table">
 	<thead>
 		<tr>
@@ -21,12 +22,13 @@
 	<%for(BoardVO board : list){ %>
 	<tr>
 	<td><%=board.getBoardNo() %></td>
-	<td><%=board.getTitle() %></td>
-	<td><%=board.getWriter() %></td
-	><td><%=board.getCreateDate() %></td>
+	<td><a href="boardInfo.do?bno=<%=board.getBoardNo() %>"><%=board.getTitle() %></a></td>
+	<td><%=board.getWriter() %></td>
+	<td><%=board.getCreateDate() %></td>
 	<td><%=board.getViewCnt() %></td>
 	</tr>
 	<%} %>
 	</tbody>
 </table>
+</form>
 <jsp:include page="../includes/footer.jsp"></jsp:include>

@@ -13,7 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.yedam.web.AddBoardControl;
 import com.yedam.web.AddFormControl;
+import com.yedam.web.BoardInfoControl;
 import com.yedam.web.MainControl;
+import com.yedam.web.ModifyControl;
+import com.yedam.web.ModifyFormControl;
+import com.yedam.web.RemoveControl;
+import com.yedam.web.RemoveFormControl;
 
 @WebServlet
 public class FrontController extends HttpServlet {
@@ -30,10 +35,16 @@ public class FrontController extends HttpServlet {
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		// url패턴과 실행할 Control(인터페이스) 구현클래스 정의
-		map.put("/main.do", new MainControl());
-		map.put("/addForm.do",new AddFormControl());
-		map.put("/addBoard.do",new AddBoardControl());
-
+		map.put("/main.do", new MainControl()); // 첫화면
+		map.put("/addForm.do",new AddFormControl()); // 추가 화면
+		map.put("/addBoard.do",new AddBoardControl()); // 추가
+		map.put("/boardInfo.do", new BoardInfoControl()); // 상세보기화면
+		// 수정관련
+		map.put("/modBoardForm.do", new ModifyFormControl()); // 수정화면
+		map.put("/updateBoard.do", new ModifyControl()); // 수정
+		// 삭제관련
+		map.put("/removeBoardForm.do", new RemoveFormControl());
+		map.put("/deleteBoard.do",new RemoveControl());
 	}
 
 	// service.
