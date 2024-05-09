@@ -17,11 +17,11 @@ public class AddEmpControl implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String a = req.getParameter("eid");
-		String b = req.getParameter("first_name");
-		String c = req.getParameter("last_name");
-		String d = req.getParameter("email");
-		String e = req.getParameter("job_id");
+		String a = req.getParameter("eid");//*****
+		String b = req.getParameter("first_name");//*****
+		String c = req.getParameter("last_name");//*****
+		String d = req.getParameter("email");//*****
+		String e = req.getParameter("job_id");//*****
 		
 		EmployeeVO vo = new EmployeeVO();
 		vo.setEmployeeId(Integer.parseInt(a));

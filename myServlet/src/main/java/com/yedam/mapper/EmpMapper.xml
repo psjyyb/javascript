@@ -10,7 +10,7 @@
 	<insert id="insertEmp" parameterType="emp">
 		insert into employees
 		(employee_id,first_name,last_name,email,hire_date,job_id)
-		values(#{employeeId},#{firstName},#{lastName},#{email},sysdate,#{jobId})
+		values(#{employeeID},#{firstName},#{lastName},#{email},sysdate,#{jobId})
 	</insert>
 	<delete id="deleteEmp" parameterType="int">
 		delete from employees

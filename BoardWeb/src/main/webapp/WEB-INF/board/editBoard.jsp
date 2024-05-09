@@ -19,7 +19,7 @@
  		<th>내용</th><td><textarea name="content" cols="30" rows="4"><%=vo.getContent() %></textarea></td>
  	</tr>
  	<tr>
- 		<th>작성자</th><td></td>
+ 		<th>작성자</th><td><%=vo.getWriter() %></td>
  	</tr>
  		<tr align="center">
 			<td colspan="2"><input type="submit"  value="수정"></td>

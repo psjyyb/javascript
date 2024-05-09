@@ -29,7 +29,7 @@ public class FrontController extends HttpServlet{
 	// init.
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		// url패턴과 실행할 Control(인터페이스) 구현클래스 정희
+		// url패턴과 실행할 Control(인터페이스) 구현클래스 정의
 		map.put("/abc.do", new ABCControl());
 		map.put("/info.do",new InfoControl());
 		map.put("/addEmp.do",new AddEmpControl());
