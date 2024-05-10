@@ -17,12 +17,13 @@ public class RemoveControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// 게시글 번호를 파라미터로 받는다
 		String bno = req.getParameter("bno");
+		String page = req.getParameter("page");
 		
 		BoardService svc = new BoardServiceImpl();
 		
 		int vo = Integer.parseInt(bno);
 		if(svc.removeBoard(vo)) {
-			resp.sendRedirect("main.do");
+			resp.sendRedirect("main.do?page="+page);
 		}else {
 			resp.sendRedirect("removeBoardForm.do");
 		}

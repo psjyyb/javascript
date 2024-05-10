@@ -9,11 +9,29 @@ public class BoardTest {
 	public static void main(String[] args) {
 		BoardService svc = new BoardServiceImpl();
 		BoardVO vo = svc.getBoard(3);
-		if (vo != null) {
-			System.out.println(vo.toString());
-		} else {
-			System.out.println("조회결과없음");
-		}
+		
+		svc.boardList(1).forEach(board -> System.out.println(board));
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+//		if (vo != null) {
+//			System.out.println(vo.toString());
+//		} else {
+//			System.out.println("조회결과없음");
+//		}
 //		vo.setTitle("등록제목");
 //		vo.setContent("등록내용");
 //		vo.setWriter("user03");

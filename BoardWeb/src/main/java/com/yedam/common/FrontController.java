@@ -1,24 +1,12 @@
 package com.yedam.common;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
+import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import com.yedam.web.AddBoardControl;
-import com.yedam.web.AddFormControl;
-import com.yedam.web.BoardInfoControl;
-import com.yedam.web.MainControl;
-import com.yedam.web.ModifyControl;
-import com.yedam.web.ModifyFormControl;
-import com.yedam.web.RemoveControl;
-import com.yedam.web.RemoveFormControl;
+import javax.servlet.http.*;
+import com.yedam.web.*;
 
 @WebServlet
 public class FrontController extends HttpServlet {
@@ -36,8 +24,8 @@ public class FrontController extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// url패턴과 실행할 Control(인터페이스) 구현클래스 정의
 		map.put("/main.do", new MainControl()); // 첫화면
-		map.put("/addForm.do",new AddFormControl()); // 추가 화면
-		map.put("/addBoard.do",new AddBoardControl()); // 추가
+		map.put("/addForm.do",new AddFormControl()); // 글등록 화면
+		map.put("/addBoard.do",new AddBoardControl()); // 글등록 기능
 		map.put("/boardInfo.do", new BoardInfoControl()); // 상세보기화면
 		// 수정관련
 		map.put("/modBoardForm.do", new ModifyFormControl()); // 수정화면
@@ -45,6 +33,10 @@ public class FrontController extends HttpServlet {
 		// 삭제관련
 		map.put("/removeBoardForm.do", new RemoveFormControl());
 		map.put("/deleteBoard.do",new RemoveControl());
+		// 로그인관련.
+		map.put("/logForm.do",new LoginForm());
+		map.put("/login.do",new LoginControl());
+		map.put("/logout.do", new LogoutControl());
 	}
 
 	// service.

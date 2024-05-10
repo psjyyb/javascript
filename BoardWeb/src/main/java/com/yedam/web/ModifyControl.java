@@ -20,13 +20,14 @@ public class ModifyControl implements Control {
 		String bno = req.getParameter("bno");
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
+		String page = req.getParameter("page");
 		BoardService svc = new BoardServiceImpl();
 		BoardVO vo = new BoardVO();
 		vo.setBoardNo(Integer.parseInt(bno));
 		vo.setTitle(title);
 		vo.setContent(content);
 		if(svc.modifyBoard(vo)) {
-			resp.sendRedirect("main.do");
+			resp.sendRedirect("main.do?page="+page);
 		}else {
 			resp.sendRedirect("modBoardForm.do");
 		}

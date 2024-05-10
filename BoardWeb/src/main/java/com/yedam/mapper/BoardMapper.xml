@@ -9,10 +9,26 @@
 		order
 		by board_no
 	</select>
+
+	<select id="boardListPaging" parameterType="int">
+	select r.*
+      from(select rownum rn,a.*
+          from (select *
+               from tbl_boards b
+               order by b.board_no) a
+          <![CDATA[
+          where rownum <= (#{page} * 5)) r          
+          ]]>     
+      where r.rn > (#{page} -1) *5
+	</select>
+	<select id ="getTotalCnt" parameterType="int">
+	select count(1)
+	from tbl_boards
+	</select>
 	<insert id="insertBoard" parameterType="board">
 		insert into
-		tbl_boards(board_no,title,content,writer)
-		values(boards_seq.nextval,#{title},#{content},#{writer})
+		tbl_boards(board_no,title,content,writer,img)
+		values(boards_seq.nextval,#{title},#{content},#{writer},#{img})
 	</insert>
 	<select id="selectBoard" resultType="board" parameterType="int">
 		select *
@@ -21,17 +37,32 @@
 	</select>
 	<update id="updateViewCnt" parameterType="int">
 		update tbl_boards
-		set view_cnt = view_cnt+1
+		set
+		view_cnt = view_cnt+1
 		where board_no= #{boardNo}
 	</update>
 	<update id="updateBoard" parameterType="board">
 		update tbl_boards
-		set title =#{title},
-		content = #{content}
+		set
+		title =#{title},
+		content = #{content},
+		create_date = sysdate
 		where board_no = #{boardNo}
 	</update>
 	<delete id="deleteBoard" parameterType="int">
-	delete tbl_boards
-	where board_no =#{boardNo}
+		delete tbl_boards
+		where
+		board_no =#{boardNo}
 	</delete>
+	<select id="selectMember" resultType="member">
+		select*
+		from tbl_members
+		where user_id =#{id}
+		and user_pw = #{pw}
+	</select>
+	<select id="selectMember2" resultType="member">
+		select*
+		from tbl_members
+		where user_id =#{id}
+	</select>
 </mapper>
