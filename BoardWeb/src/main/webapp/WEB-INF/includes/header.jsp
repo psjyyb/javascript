@@ -60,4 +60,5 @@
                 </nav>
                 <!-- Page content-->
                 <div class="container-fluid">
+                </div>
                 

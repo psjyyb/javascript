@@ -11,19 +11,19 @@
 	</select>
 
 	<select id="boardListPaging" parameterType="int">
-	select r.*
-      from(select rownum rn,a.*
-          from (select *
-               from tbl_boards b
-               order by b.board_no) a
+		select r.*
+		from(select rownum rn,a.*
+		from (select *
+		from tbl_boards b
+		order by b.board_no) a
           <![CDATA[
           where rownum <= (#{page} * 5)) r          
-          ]]>     
-      where r.rn > (#{page} -1) *5
+          ]]>
+		where r.rn > (#{page} -1) *5
 	</select>
-	<select id ="getTotalCnt" parameterType="int">
-	select count(1)
-	from tbl_boards
+	<select id="getTotalCnt" parameterType="int">
+		select count(1)
+		from tbl_boards
 	</select>
 	<insert id="insertBoard" parameterType="board">
 		insert into
@@ -47,7 +47,8 @@
 		title =#{title},
 		content = #{content},
 		create_date = sysdate
-		where board_no = #{boardNo}
+		where
+		board_no = #{boardNo}
 	</update>
 	<delete id="deleteBoard" parameterType="int">
 		delete tbl_boards

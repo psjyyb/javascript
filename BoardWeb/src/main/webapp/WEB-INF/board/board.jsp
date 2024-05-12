@@ -12,8 +12,8 @@
 	</c:when>
 	<c:otherwise>
 		<form name="myFrm">
-			<input type="hidden" name="bno" value="${result.boardNo}">
-			<input type="hidden" name="page" value="${page}">
+			<input type="hidden" name="bno" value="${result.boardNo}"> <input
+				type="hidden" name="page" value="${page}">
 		</form>
 		<table class="table">
 			<tr>
@@ -31,8 +31,15 @@
 				<td colspan="4">${result.content}</td>
 			</tr>
 			<tr>
+				<c:if test="${result.img!=null}">
+					<th>사진</th>
+					<td colspan="3"><img src="./images/${result.img}"></td>
+				</c:if>
+			</tr>
+			<tr>
 				<th>작성일시</th>
-				<td><fmt:formatDate value="${result.createDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+				<td><fmt:formatDate value="${result.createDate}"
+						pattern="yyyy-MM-dd HH:mm:ss" /></td>
 				<th>조회수</th>
 				<td>${result.viewCnt}</td>
 			</tr>
@@ -44,6 +51,7 @@
 	</c:otherwise>
 </c:choose>
 
-<script src="js/board.js">	
+<script src="js/board.js">
+	
 </script>
 <jsp:include page="../includes/footer.jsp"></jsp:include>
