@@ -33,9 +33,12 @@ fetch('replyList.do?bno=' + bno)
 
 // 댓글 삭제버튼 이벤트.
 function deleteRow(e){
+	console.log(e.target.parentElement.parentElement.children[2].innerHTML);
+	let id = e.target.parentElement.parentElement.children[2].innerHTML;
 	const rno = e.target.parentElement.parentElement.dataset.rno;
 	//console.log(rno);
 	//fetch 삭제 기능 구현
+	if(writer==id){
 	fetch('removeReply.do?rno=' + rno)
 		.then(resolve => resolve.json())
 		.then(result => {
@@ -50,6 +53,9 @@ function deleteRow(e){
 			}
 		})
 		.catch(err => console.log(err));
+		}else{
+			alert("댓글을 삭제할 권한이 없습니다.")
+		}
 }//end of deleteRow(e)
 
 document.getElementById('addReply').addEventListener('click', function(e) {
