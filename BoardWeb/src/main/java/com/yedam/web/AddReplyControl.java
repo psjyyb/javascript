@@ -21,6 +21,8 @@ public class AddReplyControl implements Control {
 		String replyer = req.getParameter("replyer");
 		String reply =req.getParameter("reply");
 		
+		req.setAttribute("replyer", replyer);
+		
 		ReplyVO rvo = new ReplyVO();
 		rvo.setBoardNo(Integer.parseInt(bno));
 		rvo.setReplyer(replyer);

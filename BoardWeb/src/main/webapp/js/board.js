@@ -23,7 +23,7 @@ fetch('replyList.do?bno=' + bno)
 			tmpl.querySelector('span:nth-of-type(2)').innerText = reply.reply;
 			tmpl.querySelector('span:nth-of-type(3)').innerText = reply.replyer;
 			document.querySelector('div.reply ul').appendChild(tmpl);
-
+			
 		})
 
 	})
@@ -31,30 +31,26 @@ fetch('replyList.do?bno=' + bno)
 		console.log(err);
 	})
 
-// 삭제버튼 이벤트.
-function deleteRow(e) {
-	//   console.log(e);
+// 댓글 삭제버튼 이벤트.
+function deleteRow(e){
 	const rno = e.target.parentElement.parentElement.dataset.rno;
-	//   console.log(rno);
-	console.log(writer);// 로그인한 유저 아이디
-	// 로그인한 유저 아이디와 댓글 유저아이디 비교
-	
-	// fetch 삭제기능 구현
+	//console.log(rno);
+	//fetch 삭제 기능 구현
 	fetch('removeReply.do?rno=' + rno)
 		.then(resolve => resolve.json())
 		.then(result => {
-			if (result.retCode == 'OK') {
+			if(result.retCode == 'OK'){
 				alert('삭제완료');
 				e.target.parentElement.parentElement.remove();
-			} else if (result.retCode == 'NG') {
-				alert('삭제 실패');
-			} else {
-				alert('알수없는 반환값');
+			}else if(result.retCode == 'NG'){
+				alert('삭제를 완료할 수 없습니다');
+				
+			}else{
+				alert('알 수 없는 반환값');
 			}
-
 		})
 		.catch(err => console.log(err));
-}
+}//end of deleteRow(e)
 
 document.getElementById('addReply').addEventListener('click', function(e) {
 

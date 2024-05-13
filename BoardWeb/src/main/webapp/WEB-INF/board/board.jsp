@@ -80,29 +80,28 @@ div.reply span {
 	<div class="content">
 		<ul>
 			<li>
-				<span class="col-sm-2">댓글번호</span>
+				<span class="col-sm-2">글번호</span>
 				<span class="col-sm-5">댓글내용</span>
-				<span class="col-sm-2">댓글작성자</span>
+				<span class="col-sm-2">작성자</span>
+			</li>
+			<li>
+				<hr />
 			</li>
 			<li style="display: none;">
-			 <hr/>
-			</li>
-			<li style="display: none;">
-				<span class="col-sm-2">2</span>
-				<span class="col-sm-5">2댓글내용</span>
-				<span class="col-sm-2">user02</span>
-				<span class="col-sm-2"><button onclick="deleteRow(event)" class="btn btn-danger">댓글삭제</button></span>
-			</li>
+				<span class="col-sm-2"></span>
+				<span class="col-sm-5"></span>
+				<span class="col-sm-2"></span>
+				<span class="col-sm-2"><button onclick="deleteRow(event)" class="btn btn-danger">삭제</button></span>
+			</li>				
 		</ul>
-
-	</div>
-	<!-- div.content -->
+	</div><!-- div.content -->
 </div>
 <!-- div.container.reply -->
 
 <script>
 const bno ='${result.boardNo}';
 const writer = '${logId}';
+
 </script>
 <script src="js/board.js">
 	
