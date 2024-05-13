@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<jsp:include page="../includes/header.jsp"></jsp:include>
 
 <form name="myFrm" action="deleteBoard.do">
 	<h3>삭제화면</h3>
@@ -44,4 +43,3 @@
 </script>
 
 
-<jsp:include page="../includes/footer.jsp"></jsp:include>

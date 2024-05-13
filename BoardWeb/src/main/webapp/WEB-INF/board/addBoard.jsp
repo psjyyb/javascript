@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!-- "WEB-INF/board/addBoard.jsp" -->
-<jsp:include page="../includes/header.jsp"></jsp:include>
+
 <c:if test="${message != null}">
 	<p>${message}</p>
 
@@ -48,4 +48,3 @@
 		reader.readAsDataURL(event.target.files[0]);
 	}
 </script>
-<jsp:include page="../includes/footer.jsp"></jsp:include>
