@@ -41,15 +41,20 @@ public class FrontController extends HttpServlet {
 		map.put("/replyList.do", new ReplyListControl());// 댓글보기
 		map.put("/removeReply.do", new RemoveReplyControl());// 댓글삭제
 		map.put("/addReply.do", new AddReplyControl()); // 댓글작성
+		map.put("/getTotalCnt.do", new TotalCountControl());
+		// 관리자권한.
+		map.put("/memberList.do", new MemberListControl());
+		// 상품관련
+		map.put("/productList.do",new ProductListControl());
+		
 		
 	}
 
 	// service.
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html;charset=utf-8"); //??
-		resp.setCharacterEncoding("utf-8"); // 요청정보 한글처리
+		//resp.setCharacterEncoding("utf-8"); // 요청정보 한글처리
 		
 		
 		String uri = req.getRequestURI(); // url 에서 localhost 를 뺀

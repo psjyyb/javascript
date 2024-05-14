@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.yedam.common.DataSource;
+import com.yedam.common.SearchVO;
 import com.yedam.mapper.ReplyMapper;
 import com.yedam.vo.ReplyVO;
 
@@ -13,8 +14,8 @@ public class ReplyServiceImpl implements ReplyService {
 	ReplyMapper mapper = session.getMapper(ReplyMapper.class);
 
 	@Override
-	public List<ReplyVO> replyList(int boardNo) {
-		return mapper.replyList(boardNo);
+	public List<ReplyVO> replyList(SearchVO search) {
+		return mapper.replyListPaging(search);
 	}
 	@Override
 	public boolean removeReply(int replyNo) {
@@ -24,4 +25,8 @@ public class ReplyServiceImpl implements ReplyService {
 	public boolean addReply(ReplyVO rvo) {
 		return mapper.insertReply(rvo)==1;
 	}
+@Override
+public int getReplyCnt(int boardNo) {
+	return mapper.getReplyCnt(boardNo);
+}
 }

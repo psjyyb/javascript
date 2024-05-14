@@ -37,7 +37,7 @@ public class AddBoardControl implements Control {
 		MemberVO mvo = svc.checkMember(writer);
 		if (mvo == null) {
 			req.setAttribute("message", "권한이 없습니다.");
-			req.getRequestDispatcher("WEB-INF/board/addBoard.jsp").forward(req, resp);
+			req.getRequestDispatcher("WEB-INF/view/board/addBoard.jsp").forward(req, resp);
 
 			return;
 		}

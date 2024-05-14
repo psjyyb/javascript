@@ -22,6 +22,36 @@ div.reply span {
 }
 </style>
 
+<style>
+.center {
+	text-align: center;
+}
+
+.pagination {
+	display: inline-block;
+}
+
+.pagination a {
+	color: black;
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	transition: background-color .3s;
+	border: 1px solid #ddd;
+	margin: 0 4px;
+}
+
+.pagination a.active {
+	background-color: #4CAF50;
+	color: white;
+	border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {
+	background-color: #ddd;
+}
+</style>
+
 <h3>상세화면</h3>
 
 <c:choose>
@@ -94,6 +124,16 @@ div.reply span {
 				<span class="col-sm-2"><button onclick="deleteRow(event)" class="btn btn-danger">삭제</button></span>
 			</li>				
 		</ul>
+		<div class="footer">
+		  <div class="center">
+			<div class="pagination">
+			<a href="#">1</a>
+			<a href="#" class="active">2</a>
+			<a href="#">3</a>
+			<a href="#">4</a>
+			</div>
+		  </div>
+		</div>
 	</div><!-- div.content -->
 </div>
 <!-- div.container.reply -->
@@ -103,6 +143,5 @@ const bno ='${result.boardNo}';
 const writer = '${logId}';
 
 </script>
-<script src="js/board.js">
-	
-</script>
+<script src="js/replyService.js"></script>
+<script src="js/board.js"></script>
