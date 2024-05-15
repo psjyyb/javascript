@@ -73,7 +73,6 @@ function deleteRow(e) {
 
 //댓글등록이벤트(addEventListener는 중첩, onclick은 한번만)
 document.getElementById('addReply').addEventListener('click', function(e) {
-	console.log("씨;발")
 	//console.log(document.querySelector('#addReply'));
 	let reply = document.getElementById('reply').value;
 	if (writer == '') { //댓글창에 로그인하지 않고 입력할때 뜨는 알림창
@@ -88,8 +87,9 @@ document.getElementById('addReply').addEventListener('click', function(e) {
 		result => {
 			if (result.retCode == 'OK') {
 				//location.reload(); /새로고침..?/reload 대신하기위해 makeRow를 생성
-				const row = makeRow(result.retVal);
-				document.querySelector('div.reply ul').appendChild(row);
+				//const row = makeRow(result.retVal);
+				//document.querySelector('div.reply ul').appendChild(row);
+				showList();
 				//댓글등록 후에 reply내용 초기화하기
 				document.getElementById('reply').value = "";
 			}

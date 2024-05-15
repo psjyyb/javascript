@@ -92,7 +92,6 @@ document.getElementById('addReply').addEventListener('click', function(e) {
 				document.getElementById('reply').value = "";
 			})
 			.catch(err => console.log(err))
-
 	}
 })
 
