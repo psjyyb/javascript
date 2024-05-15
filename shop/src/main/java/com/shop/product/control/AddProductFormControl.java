@@ -14,6 +14,7 @@ public class AddProductFormControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String path = "WEB-INF/shop/addProductForm.jsp";
+		path = "shop/addProductForm.tiles";
 		req.getRequestDispatcher(path).forward(req, resp);
 	}
 

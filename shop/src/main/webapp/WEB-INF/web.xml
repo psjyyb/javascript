@@ -5,6 +5,37 @@
 	id="WebApp_ID" version="4.0">
 	<display-name>shop</display-name>
 
+	<listener>
+		<listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>
+	</listener>
+
+	<!-- filter. encoding 지정값. -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>com.shop.common.EncodingFilter</filter-class>
+		<init-param>
+			<param-name>enc</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	<!-- 로그인 해야 가능한 기능 -->
+	<filter>
+		<filter-name>respFilter</filter-name>
+		<filter-class>com.shop.common.ResponseFilter</filter-class>
+		<init-param>
+			<param-name>response</param-name>
+			<param-value>/productInfo.do</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>respFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+
 	<!-- 서블릿과 url 매칭. -->
 	<servlet>
 		<servlet-name>first</servlet-name>
@@ -14,6 +45,17 @@
 		<servlet-name>first</servlet-name>
 		<url-pattern>/first.action</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Tiles Dispatch Servlet</servlet-name>
+		<servlet-class>org.apache.tiles.web.util.TilesDispatchServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Tiles Dispatch Servlet</servlet-name>
+		<url-pattern>*.tiles</url-pattern>
+	</servlet-mapping>
+
 
 	<servlet>
 		<servlet-name>frontController</servlet-name>

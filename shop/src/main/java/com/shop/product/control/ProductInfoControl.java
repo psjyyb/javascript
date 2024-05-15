@@ -25,6 +25,7 @@ public class ProductInfoControl implements Control {
 		req.setAttribute("pno", pvo);
 		
 		String path = "WEB-INF/shop/productInfo.jsp";
+		path = "shop/productInfo.tiles";
 		req.getRequestDispatcher(path).forward(req, resp);
 	}
 

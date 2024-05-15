@@ -16,6 +16,7 @@ public class MainControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String path = "WEB-INF/shop/shopmain.jsp";
+		path = "shop/shopmain.tiles";
 		
 		ProductService svc = new ProductServiceImpl();
 		List<ProductVO> list = svc.productList();
