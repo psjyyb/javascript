@@ -32,10 +32,12 @@ function showList() {
 function makeRow(reply = {}) {
 	let tmpl = $('div.reply li:eq(2)').clone();
 	tmpl.on('dblclick', function(e) {
-		$('#myModal').css('display', 'block');
-		let replyNo = $(e.target).parent().children().eq(0).text();
-		$('.modal-content p:eq(0)').text('댓글번호 : ' + replyNo);
-		$('.modal-content p:eq(1)').find('input').val(reply.reply);
+		setTimeout(function() {
+			$('#myModal').css('display', 'block');
+			let replyNo = $(e.target).parent().children().eq(0).text();
+			$('.modal-content p:eq(0)').text('댓글번호 : ' + replyNo);
+			$('.modal-content p:eq(1)').find('input').val(reply.reply);
+		}, 1500);
 	})
 	tmpl.css('display', 'block');
 	tmpl.attr('data-rno', reply.replyNo);
@@ -164,14 +166,14 @@ $('.modal-content button').on('click', function() {
 	let reply = $('input[name=modal_reply]').val();
 	let replyNo = $('.modal span').dataset;
 	let rno = $("p").eq(0).text(replyNo).text();
-	console.log(rno.replace(/[^0-9]/g,''));
-	console.log('수정댓글'+reply);
-	svc.editReply({ rno: rno.replace(/[^0-9]/g,''), reply: reply },
+	console.log(rno.replace(/[^0-9]/g, ''));
+	console.log('수정댓글' + reply);
+	svc.editReply({ rno: rno.replace(/[^0-9]/g, ''), reply: reply },
 		result => {
 			console.log(result)
 			if (result) {
-			alert("수정완료");
-			$('#myModal').css('display', 'none')
+				alert("수정완료");
+				$('#myModal').css('display', 'none')
 			}
 		}, //두번째 param
 		err => console.log(err) //세번째 param
