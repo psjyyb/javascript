@@ -18,7 +18,6 @@ showList()
 function showList() {
 	// 새로운 목록을 출력할 경우에 기존 목록 지우기.
 	makePageInfo()
-	console.log(123);
 	$('div.content ul li:gt(2)').remove();
 	svc.replyList({ bno: bno, page: page },
 		result => {
@@ -32,11 +31,9 @@ function showList() {
 
 function makeRow(reply = {}) {
 	let tmpl = $('div.reply li:eq(2)').clone();
-	console.log(tmpl);
 	tmpl.on('dblclick', function(e) {
 		$('#myModal').css('display', 'block');
 		let replyNo = $(e.target).parent().children().eq(0).text();
-		console.log(reply);
 		$('.modal-content p:eq(0)').text('댓글번호 : ' + replyNo);
 		$('.modal-content p:eq(1)').find('input').val(reply.reply);
 	})
@@ -164,13 +161,15 @@ function createPageList(result) {
 
 // 수정기능 추가
 $('.modal-content button').on('click', function() {
-	let reply = $('#reply').val();
-	let replyNo = $('span:eq(0)').text;
-	console.log(replyNo);
-	console.log(reply);
-	svc.editReply({ rno: replyNo, reply: reply },
+	let reply = $('input[name=modal_reply]').val();
+	let replyNo = $('.modal span').data();
+	let rno = $("p").eq(0).text(replyNo).text();
+	//console.log(rno.replace(/[^0-9]/g,''));
+	//console.log('수정댓글'+reply);
+	svc.editReply({ rno: rno.replace(/[^0-9]/g,''), reply: reply },
 		result => {
-			if (result.retCode == 'OK') {
+			//console.log(result);
+			if (result) {
 			alert("수정완료");
 			$('#myModal').css('display', 'none')
 			}

@@ -36,8 +36,12 @@ const svc = {
 			.catch(errorCall);
 	},
 	editReply(param = {}, successCall, errorCall) {
-		fetch('editReply.do?rno=' + param.rno + '&reply=' + param.reply)
-			.then(resolve => resolve.json())
+		fetch('editReply.do',{
+			method: 'post',
+			headers:  { 'Content-Type': 'application/x-www-form-urlencoded' },
+			body: 'rno='+param.rno+'&reply='+param.reply
+			})
+			.then(resolve => resolve)
 			.then(successCall)
 			.catch(errorCall);
 	}
