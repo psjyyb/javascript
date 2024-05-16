@@ -34,5 +34,11 @@ const svc = {
 			.then(resolve => resolve.json())
 			.then(successCall)
 			.catch(errorCall);
+	},
+	editReply(param = {}, successCall, errorCall) {
+		fetch('editReply.do?rno=' + param.rno + '&reply=' + param.reply)
+			.then(resolve => resolve.json())
+			.then(successCall)
+			.catch(errorCall);
 	}
 } // end of svc.

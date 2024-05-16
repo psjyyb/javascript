@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+  // + 버튼을 클릭하면 왼쪽 옵션이 오른쪽으로
+  // - 버튼을 클릭하면 오른쪽 옵션이 왼쪽으로 이동하도록 기능을 구현.
+</script>
+</head>
+
+<body>
+	<select multiple style="height: 150px">
+		<option>option1</option>
+		<option>option2</option>
+		<option>option3</option>
+		<option>option4</option>
+		<option>option5</option>
+	</select>
+	<button>+</button>
+	<button>-</button>
+	<select multiple style="height: 150px">
+		<option>option6</option>
+		<option>option7</option>
+		<option>option8</option>
+		<option>option9</option>
+		<option>option10</option>
+	</select>
+</body>
+
+</html>
+<script>
+$(document).ready(function(){
+		$('button:first').on('click',function(){
+	    let select = $("select:first option:selected").detach();
+			$('select:last').append(select);
+	})
+	$('button:last').on('click',function(){
+	    let select = $("select:last option:selected").detach();
+			$('select:first').append(select);
+})
+})
+</script>

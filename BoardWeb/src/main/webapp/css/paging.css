@@ -1,0 +1,20 @@
+@charset "UTF-8";
+div.reply div {
+	margin: auto;
+}
+
+div.reply ul {
+	list-style-type: none;
+	margin-top: 5px;
+}
+
+div.reply li {
+	padding-top: 1px;
+	padding-bottom: 1px;
+}
+
+div.reply span {
+	display: inline-block;
+}
+
+

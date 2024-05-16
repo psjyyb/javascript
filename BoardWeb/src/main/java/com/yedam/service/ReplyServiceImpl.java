@@ -17,16 +17,25 @@ public class ReplyServiceImpl implements ReplyService {
 	public List<ReplyVO> replyList(SearchVO search) {
 		return mapper.replyListPaging(search);
 	}
+
 	@Override
 	public boolean removeReply(int replyNo) {
-		return mapper.deleteReply(replyNo)==1;
+		return mapper.deleteReply(replyNo) == 1;
 	}
-@Override
+
+	@Override
 	public boolean addReply(ReplyVO rvo) {
-		return mapper.insertReply(rvo)==1;
+		return mapper.insertReply(rvo) == 1;
 	}
-@Override
-public int getReplyCnt(int boardNo) {
-	return mapper.getReplyCnt(boardNo);
-}
+
+	@Override
+	public int getReplyCnt(int boardNo) {
+		return mapper.getReplyCnt(boardNo);
+	}
+
+	@Override
+	public boolean editReply(ReplyVO rvo) {
+		// TODO Auto-generated method stub
+		return mapper.modifyReply(rvo)==1;
+	}
 }

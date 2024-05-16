@@ -15,5 +15,7 @@ public interface ReplyMapper {
 	int insertReply(ReplyVO rvo);
 	// 전체 댓글 갯수확인
 	int getReplyCnt(int boardNo);
+	// 댓글수정
+	int modifyReply(ReplyVO rvo);
 
 }
