@@ -162,13 +162,13 @@ function createPageList(result) {
 // 수정기능 추가
 $('.modal-content button').on('click', function() {
 	let reply = $('input[name=modal_reply]').val();
-	let replyNo = $('.modal span').data();
+	let replyNo = $('.modal span').dataset;
 	let rno = $("p").eq(0).text(replyNo).text();
-	//console.log(rno.replace(/[^0-9]/g,''));
-	//console.log('수정댓글'+reply);
+	console.log(rno.replace(/[^0-9]/g,''));
+	console.log('수정댓글'+reply);
 	svc.editReply({ rno: rno.replace(/[^0-9]/g,''), reply: reply },
 		result => {
-			//console.log(result);
+			console.log(result)
 			if (result) {
 			alert("수정완료");
 			$('#myModal').css('display', 'none')
