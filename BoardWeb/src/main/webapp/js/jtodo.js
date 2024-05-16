@@ -6,8 +6,18 @@ $(document).ready(function() {
 	$('li').each(function() {
 		var span = $('<span></span>').addClass('close').text('\u00D7');
 		$(this).append(span);
+		$(this).on('click',function(){
+			$(this).toggleClass('checked');
+		})
 	})
 	$('.close').on('click',function(){
-		console.log(this.parent());
+	$(this).parent().css('display','none');
+	})
+	$('.addBtn').on('click',function(){
+		
+		let li =$('<li />');
+		li.text($('#myInput').val());
+		$('#myUL').append(li);
+		
 	})
 })
