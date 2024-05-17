@@ -92,4 +92,6 @@
 		from tbl_members
 		where user_id =#{id}
 	</select>
+	
+
 </mapper>

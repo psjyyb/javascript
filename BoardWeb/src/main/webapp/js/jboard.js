@@ -178,7 +178,6 @@ $('.modal-content button').on('click', function() {
 		}, //두번째 param
 		err => console.log(err) //세번째 param
 	)
-
 	showList();
 
 })

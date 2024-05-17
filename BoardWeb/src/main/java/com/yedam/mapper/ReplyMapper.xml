@@ -34,14 +34,32 @@
 			select replyes_seq.nextval from dual
 		</selectKey>
 		insert into tbl_replyes (reply_no,replyer,reply,board_no)
-		values (#{replyNo},#{replyer},#{reply},#{boardNo})
+		values
+		(#{replyNo},#{replyer},#{reply},#{boardNo})
 	</insert>
 	<select id="getReplyCnt" parameterType="int" resultType="int">
-		select count(reply)
+		select
+		count(reply)
 		from tbl_replyes
 		where board_no = #{boardNo}
 	</select>
 	<update id="modifyReply" parameterType="com.yedam.vo.ReplyVO">
-		update tbl_replyes set reply = #{reply} where reply_no = #{replyNo}
+		update tbl_replyes set
+		reply = #{reply} where reply_no = #{replyNo}
 	</update>
+
+	<select id="selectList" resultType="com.yedam.vo.CartVO">
+		select *
+		from tbl_cart
+		order by no
+	</select>
+	<update id="updateCart" parameterType="com.yedam.vo.CartVO">
+	update tbl_cart
+	set qty = qty + #{qty}
+	where no =#{no}
+	</update>
+	<delete id="deleteCart" parameterType="int">
+	delete from tbl_cart 
+	where no = #{no}
+	</delete>
 </mapper>
