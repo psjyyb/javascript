@@ -37,14 +37,23 @@
 				<th>판매자ID:</th>
 				<td colspan="3">${pno.productId}</td>
 			</tr>
-			<c:if test="${pno.productId eq logId }">
+			<c:choose>
+			<c:when test="${pno.productId eq logId }">
 				<tr align="center">
 					<td colspan="6"><button class="btn btn-primary" id="modBtn">수정</button>
 						<button class="btn btn-danger" id="delBtn">삭제</button></td>
 				</tr>
-			</c:if>
+			</c:when>
+			<c:otherwise>
+			<tr align="center">
+			<td colspan="6"><button class="btn btn-primary" id="orderBtn">주문</button></td>
+			</tr>
+			</c:otherwise>
+			</c:choose>
 		</table>
 	</c:otherwise>
 </c:choose>
 <script>
+const pno = "${ pno.productNo }";
 </script>
+<script src="js/shop.js"></script>

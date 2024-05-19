@@ -4,18 +4,26 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.shop.product.mapper.ProductMapper">
 	<select id="productList" resultType="product">
-	select product_no, product_name, product_price
-	from product 
-	order by product_no
+		select product_no, product_name, product_price
+		from product
+		order by product_no
 	</select>
 	<insert id="addProduct" parameterType="product">
-		insert into product(product_no,product_name,product_price,img,product_id,product_give)
-		values (product_seq.nextval,#{productName},#{productPrice},#{img},#{logId},#{productGive})
+		insert into
+		product(product_no,product_name,product_price,img,product_id,product_give)
+		values
+		(product_seq.nextval,#{productName},#{productPrice},#{img},#{logId},#{productGive})
 	</insert>
-	<select id="productInfo" resultType="product" parameterType="int">
-		select * 
+	<select id="productInfo" resultType="product"
+		parameterType="int">
+		select *
 		from product
 		where product_no = #{productNo}
 	</select>
+	<delete id="deleteProduct" parameterType="int">
+		delete product
+		where product_no = #{productNo}
+	</delete>
+
 
 </mapper>

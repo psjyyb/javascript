@@ -8,4 +8,5 @@ public interface ProductMapper {
 	List<ProductVO> productList();
 	int addProduct(ProductVO product);
 	ProductVO productInfo(int productNo);
+	int deleteProduct(int productNo);
 }

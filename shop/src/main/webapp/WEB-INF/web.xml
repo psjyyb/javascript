@@ -10,31 +10,7 @@
 	</listener>
 
 	<!-- filter. encoding 지정값. -->
-	<filter>
-		<filter-name>encodingFilter</filter-name>
-		<filter-class>com.shop.common.EncodingFilter</filter-class>
-		<init-param>
-			<param-name>enc</param-name>
-			<param-value>UTF-8</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>encodingFilter</filter-name>
-		<url-pattern>*.do</url-pattern>
-	</filter-mapping>
-	<!-- 로그인 해야 가능한 기능 -->
-	<filter>
-		<filter-name>respFilter</filter-name>
-		<filter-class>com.shop.common.ResponseFilter</filter-class>
-		<init-param>
-			<param-name>response</param-name>
-			<param-value>/productInfo.do</param-value>
-		</init-param>
-	</filter>
-	<filter-mapping>
-		<filter-name>respFilter</filter-name>
-		<url-pattern>*.do</url-pattern>
-	</filter-mapping>
+	
 
 	<!-- 서블릿과 url 매칭. -->
 	<servlet>

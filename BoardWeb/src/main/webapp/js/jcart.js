@@ -31,10 +31,12 @@ let basket = {
 					$(rowDiv).attr('data-id', cart.no);
 					$(rowDiv).find('div.img>img').attr('src', 'images/'+ cart.productNm + '.jpg');
 					$(rowDiv).find('div.pname>span').text(cart.productNm);
-					$(rowDiv).find('div.basketprice').children().eq(2).text(cart.price.numberFormat() + "원");
-					
-					$(rowDiv).find('div.basketprice input').val(cart.price);
+					$(rowDiv).find('div.basketprice').children().eq(1).text(cart.price.numberFormat() + "원"); //
+					console.log($(rowDiv).find('div.basketprice').children().eq(1));
+					console.log(cart.price.numberFormat());
+					//$(rowDiv).find('div.basketprice input').val(cart.price);
 					$(rowDiv).find('div.basketprice input').attr('id', 'p_price' + cart.no);
+					console.log($(rowDiv).find('div.basketprice').children().eq(1).text());
 					
 					$(rowDiv).find('div.updown input').val(cart.qty);
 					$(rowDiv).find('div.updown input').attr('id', 'p_num' + cart.no);
@@ -45,7 +47,7 @@ let basket = {
 						basket.changePNum(cart.no);
 					})
 					$(rowDiv).find('div.updown span').on('click', () => {
-						basket.changePnum(cart.no);
+						basket.changePNum(cart.no);
 					})
 					$(rowDiv).find('div.updown span:nth-of-type(2)').on('click', ()=>{
 						basket.changePNum(cart.no);
@@ -53,12 +55,12 @@ let basket = {
 					
 					// event
 					$(rowDiv).find('div.updown input').on('keyup', () => basket.changePNum(cart.no));
-					rowDiv.querySelector('div.updown span').onclick = () => basket.changePNum(cart.no);
-					rowDiv.querySelector('div.updown span:nth-of-type(2)').onclick = () => basket.changePNum(cart.no);
+					$(rowDiv).find('div.updown span').on('click', () => basket.changePNum(cart.no));
+					$(rowDiv).find('div.updown span:nth-of-type(2)').on('click', () => basket.changePNum(cart.no));
 					// 개별합계
-					rowDiv.querySelector('div.sum').textContent = (cart.qty * cart.price).numberFormat() + "원";
-					rowDiv.querySelector('div.sum').setAttribute('id', 'p_sum' + cart.no);
-					document.querySelector('#basket').append(rowDiv);
+					$(rowDiv).find('div.sum').text((cart.qty * cart.price).numberFormat() + "원");
+					$(rowDiv).find('div.sum').attr('id', 'p_sum' + cart.no);
+					$('#basket').append(rowDiv);
 				});
 				basket.reCalc();
 			},
@@ -66,6 +68,67 @@ let basket = {
 				console.log(err);
 			}
 		)// end of cartList.
+	},
+	
+	delItem: function() {
+		let no = $(event.target).parent().parent().parent().data('id');
+		svc.cartRemove(no, (result)=> {
+			if(result.retCode == 'OK') {
+				let price = $('#p_price' + no).val(); // 단가
+				let qty = $('#p_num' + no).val(); //  삭제 후 현재 수량
+				// 합계반영
+				basket.cartCount -= qty;
+				basket.cartTotal -= (price * qty);
+				basket.reCalc();
+				// 화면에서 지우기.
+				$('div[data-id="' + no + '"]').remove();
+			}
+			
+		}, err => console.log(err));
+	},
+	
+	reCalc: function() {
+		//수량, 금액 합계 계산
+		//합계 자리에 출력
+		$('#sum_p_num span').text(basket.cartCount);
+		$('#sum_p_price span').text(basket.cartTotal.numberFormat());
+	},
+	
+	changePNum: function(no) {
+		let qty = -1;
+		if (event.target.nodeName == "I") {
+			if (event.target.className.indexOf("up") != -1) {
+				qty = 1;
+			}
+
+		} else if (event.target.nodeName == "INPUT") {
+			if (event.key == "ArrowUp") {
+				qty = 1;
+			}
+		}
+		let price = $('#p_price' + no).val();
+		let qtyElem =$('#p_num' + no);
+		let sumElem = $('#p_sum' + no);
+		let cvo = {no, qty}
+		
+		svc.cartUpdate(cvo,
+		 result =>{
+		$(qtyElem).val(parseInt($(qtyElem).val()) + qty); // 수량변경
+				$(sumElem).text((price * $(qtyElem).val()).numberFormat() + "원");
+				// 전체수량, 금액
+				basket.cartCount += qty;
+				basket.cartTotal += (price * qty);
+				basket.reCalc();
+			},
+			err => {
+				console.log(err);
+			}
+
+		)
+		
 	}
+	
+	
 }
+
 basket.list();

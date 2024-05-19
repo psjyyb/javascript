@@ -8,4 +8,6 @@ public interface ProductService {
 	List<ProductVO> productList();
 	boolean addProduct(ProductVO pvo);
 	ProductVO productInfo(int productNo);
+	boolean deleteProduct(int productNo);
+	
 }

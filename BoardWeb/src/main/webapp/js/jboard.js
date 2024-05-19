@@ -37,7 +37,7 @@ function makeRow(reply = {}) {
 			let replyNo = $(e.target).parent().children().eq(0).text();
 			$('.modal-content p:eq(0)').text('댓글번호 : ' + replyNo);
 			$('.modal-content p:eq(1)').find('input').val(reply.reply);
-		}, 1500);
+		}, 10);
 	})
 	tmpl.css('display', 'block');
 	tmpl.attr('data-rno', reply.replyNo);

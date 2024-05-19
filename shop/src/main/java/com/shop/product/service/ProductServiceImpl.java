@@ -25,4 +25,8 @@ public class ProductServiceImpl implements ProductService {
 	public ProductVO productInfo(int productNo) {
 		return mapper.productInfo(productNo);
 	}
+	@Override
+	public boolean deleteProduct(int productNo) {
+		return mapper.deleteProduct(productNo)==1;
+	}
 }
