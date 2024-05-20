@@ -53,6 +53,9 @@ public class FrontController extends HttpServlet {
 		map.put("/editCart.do", new EditCart());
 		map.put("/delCart.do", new Delcart());
 		
+		// 데이터 생성.
+		map.put("/registerCenter.do", new RegisterCenter());
+		
 	}
 
 	// service.
