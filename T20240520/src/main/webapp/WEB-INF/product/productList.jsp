@@ -19,7 +19,7 @@ color: black;
 					<div class="card h-100">
 						<!-- Product image-->
 						<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-						<img class="card-img-top" src="images/${product.prodImage}" />
+						<img class="card-img-top" src="resources/images/${product.prodImage}" />
 						<!-- Product details-->
 						<div class="card-body p-4">
 							<div class="text-center">

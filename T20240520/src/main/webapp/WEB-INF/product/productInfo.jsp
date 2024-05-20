@@ -7,7 +7,7 @@
 		<div class="row gx-4 gx-lg-5 align-items-center">
 			<div class="col-md-6">
 				<img class="card-img-top mb-5 mb-md-0"
-					src="images/${pInfo.prodImage}" />
+					src="resources/images/${pInfo.prodImage}" />
 			</div>
 			<div class="col-md-6">
 				<div class="small mb-1">CODE: ${pInfo.prodCode }</div>
@@ -38,7 +38,7 @@
 					<!-- Product image-->
 					<div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
 					<img class="card-img-top"
-						src="images/${list.prodImage}"/>
+						src="resources/images/${list.prodImage}"/>
 					<!-- Product details-->
 					<div class="card-body p-4">
 						<div class="text-center">
